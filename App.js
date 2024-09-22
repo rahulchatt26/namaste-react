@@ -1,25 +1,20 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 
-const nestedElements = React.createElement(
-  "div",
-  { id: "parent" },
-
-  [
-    React.createElement("div", { id: "child" }, [
-      React.createElement("h1", {}, "I'm a h1 tag"),
-      React.createElement("h2", {}, "I'm a h2 tag"),
-    ]),
-    React.createElement("div", { id: "child2" }, [
-      React.createElement("h1", {}, "I'm a h1 tag"),
-      React.createElement("h2", {}, "I'm a h2 tag"),
-    ]),
-  ]
+// core React
+// React.createElement => reactElement (JS Object) => HTMLElement (render)
+const heading = React.createElement(
+  "h1",
+  { id: "heading" },
+  "Namaste React 🚀"
 );
-// This is not readable at all, but this is core react
-// Later on we will use JSX to create element
-console.log(nestedElements);
+console.log(heading);
+
+// JSX -> HTML-like syntax -> (Not an HTML)
+// JSX => Parcel => Babel (transpilation job)
+// JSX => React.createElement (transpiled) => reactElement (JS Object) => HTMLElement (render)
+const jsxHeading = <h1 id="heading">Namaste React using JSX 🚀</h1>;
+console.log(jsxHeading);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-
-root.render(nestedElements);
+root.render(jsxHeading);
